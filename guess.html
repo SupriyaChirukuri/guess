@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    <p id="message"></p>
+    <input id="guess" type="number" placeholder="Enter your guess">
+    <button id="submit">Submit</button>
+    <p id="result"></p>
+    <script>
+        let attempts = 0;
+        let number = Math.floor(Math.random() * 100) + 1;
+        document.getElementById("submit").addEventListener("click", checkGuess);
+
+        function checkGuess() {
+            attempts++;
+            let guess = parseInt(document.getElementById("guess").value);
+            if (guess === number) {
+                document.getElementById("message").innerHTML = "Congratulations, you guessed the number!";
+                document.getElementById("result").innerHTML = `It took you ${attempts} attempts to win the game.`;
+            } else if (guess > number) {
+                document.getElementById("message").innerHTML = "Your guess is too high. Try again!";
+            } else {
+                document.getElementById("message").innerHTML = "Your guess is too low. Try again!";
+            }
+            document.getElementById("guess").value = "";
+        }
+    </script>
+</body>
+</html>
